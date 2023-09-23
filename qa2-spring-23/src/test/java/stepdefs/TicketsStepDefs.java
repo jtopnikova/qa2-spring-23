@@ -89,7 +89,7 @@ public class TicketsStepDefs {
 
     @Then("selected seat number appears")
     public void selected_seat_check() {
-        Assertions.assertEquals(flight.getSeatNr(), seatSelectionPage.getSelectedSeat(), "Incorrect Seat Number");
+        Assertions.assertEquals(String.valueOf(flight.getSeatNr()), seatSelectionPage.getSelectedSeat(), "Incorrect Seat Number");
     }
 
     @When("we are confirming seat")
