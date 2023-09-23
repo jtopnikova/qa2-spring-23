@@ -12,6 +12,7 @@ public class WeatherResponse {
 
     @JsonProperty("timezone_offset")
     private int timezoneOffset;
+
     private Current current;
 
     @JsonProperty("minutely")
@@ -25,6 +26,17 @@ public class WeatherResponse {
 
     @JsonProperty("alerts")
     private List<Alerts> alerts;
+
+    @JsonProperty("weather")
+    private List<Weather> weather;
+
+    public List<Weather> getWeather() {
+        return weather;
+    }
+
+    public void setWeather(List<Weather> weather) {
+        this.weather = weather;
+    }
 
     public double getLat() {
         return lat;

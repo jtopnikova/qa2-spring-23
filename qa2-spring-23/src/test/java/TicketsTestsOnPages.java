@@ -1,15 +1,12 @@
+import model.Tickets.Flight;
+import model.Tickets.Passenger;
 import pages.*;
-import model.ReservationInfo;
 import org.junit.jupiter.api.Test;
 
 public class TicketsTestsOnPages {
     private final String URL = "http://www.qaguru.lv:8089/tickets";
-    private final String DEPARTURE = "RIX";
-    private final String ARRIVAL = "MEL";
-    private ReservationInfo info = new ReservationInfo("Julija", "Tester", "WERTR", 4,
-            1, 1, "11-05-2018");
-    private int seatNr = 28;
-
+    private Passenger passenger = new Passenger("Julija", "Top");
+    private Flight flight = new Flight("RIX", "JFC", "CCCCCC", 2, 1, 3, "12-05-2018 ", 17);
 
     @Test
     public void successTicketsBookCheck() {
@@ -17,12 +14,12 @@ public class TicketsTestsOnPages {
         baseFunc.openUrl(URL);
 
         HomePage homePage = new HomePage(baseFunc);
-        homePage.selectDepartureAirport(DEPARTURE);
-        homePage.selectArrivalAirport(ARRIVAL);
+        homePage.selectDepartureAirport(flight.getDeparture());
+        homePage.selectArrivalAirport(flight.getArrival());
         homePage.clickGoGoGoBtn();
 
         PassengerInfoPage infoPage = new PassengerInfoPage(baseFunc);
-        infoPage.fillInPassengerInfo(info);
+        infoPage.fillInPassengerInfo(passenger, flight);
         infoPage.clickGetPrice();
         infoPage.clickBook();
 
@@ -31,7 +28,7 @@ public class TicketsTestsOnPages {
         //seatsPage.clickBook();
 
         SeatSelectionPage seatSelectionPage = new SeatSelectionPage(baseFunc);
-        seatSelectionPage.selectSeat(seatNr);
+        seatSelectionPage.selectSeat(flight.getSeatNr());
         seatSelectionPage.clickBook();
 
         FinalPage finalPage = new FinalPage(baseFunc);

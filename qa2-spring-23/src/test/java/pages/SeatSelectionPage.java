@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class SeatSelectionPage {
     private final By SEAT = By.xpath(".//div[@class = 'seat']");
     private final By BOOK_BTN = By.id("book3");
+    private final By SELECTED_SEAT = By.xpath(".//div[@class = 'line']");
     private BaseFunc baseFunc;
     private int seatNr = 28;
 
@@ -36,6 +38,10 @@ public class SeatSelectionPage {
 
     public void clickBook() {
         baseFunc.click(BOOK_BTN);
+    }
+
+    public String getSelectedSeat() {
+     return baseFunc.findElement(SELECTED_SEAT).getText().substring(14);
     }
 }
 //__________FOR________
