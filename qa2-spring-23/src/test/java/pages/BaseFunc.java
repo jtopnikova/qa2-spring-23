@@ -62,5 +62,8 @@ public class BaseFunc {
     public List<WebElement> findElements(By locator) {
         return browser.findElements(locator);
     }
+    public List<WebElement> waitForNumberOfElementsToBe(By locator, int count) {
+        return wait.until(ExpectedConditions.numberOfElementsToBe(locator, count));
+    }
 }
 

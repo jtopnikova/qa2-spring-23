@@ -1,7 +1,10 @@
 package pages;
 
-import model.ReservationInfo;
+import model.Tickets.Flight;
+import model.Tickets.Passenger;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class PassengerInfoPage {
     private final By NAME_INPUT = By.id("name");
@@ -22,20 +25,42 @@ public class PassengerInfoPage {
         this.baseFunc = baseFunc;
     }
 
-    public void fillInPassengerInfo(ReservationInfo reservationInfo) {
-    baseFunc.type(NAME_INPUT, reservationInfo.getFirstName());
-    baseFunc.type(SURNAME_INPUT, reservationInfo.getLastName());
-    baseFunc.type(DISCOUNT_INPUT, reservationInfo.getDiscount());
-    baseFunc.type(ADULT_COUNT_INPUT, reservationInfo.getPassengerCount());
-    baseFunc.type(CHILDREN_COUNT_INPUT, reservationInfo.getChildCount());
-    baseFunc.type(BAGS_COUNT_INPUT, reservationInfo.getBagsCount());
-    baseFunc.selectByText(SELECTED_FLIGHT, reservationInfo.getFlightDate());
+    public void fillInPassengerInfo(Passenger passenger, Flight flight) {
+        baseFunc.type(NAME_INPUT, passenger.getFirstName());
+        baseFunc.type(SURNAME_INPUT, passenger.getLastName());
+        baseFunc.type(DISCOUNT_INPUT, flight.getDiscount());
+        baseFunc.type(ADULT_COUNT_INPUT, flight.getPassengersCount());
+        baseFunc.type(CHILDREN_COUNT_INPUT, flight.getChildCount());
+        baseFunc.type(BAGS_COUNT_INPUT, flight.getLuggageCount());
+        baseFunc.selectByText(SELECTED_FLIGHT, flight.getFlightDate());
 
     }
-    public void clickGetPrice()  {
+
+    public void clickGetPrice() {
         baseFunc.click(GET_PRICE_LINK);
     }
+
     public void clickBook() {
         baseFunc.click(BOOK_BTN);
+    }
+
+    public String getDepartureAirport() {
+        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 2).get(0).getText();
+    }
+
+    public String getArrivalAirport() {
+        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 2).get(1).getText();
+    }
+
+    public String getSecondDepartureAirport() {
+        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 5).get(3).getText();
+    }
+
+    public String getSecondArrivalAirport() {
+        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 5).get(4).getText();
+    }
+
+    public String getName() {
+        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 5).get(3).getText();
     }
 }
