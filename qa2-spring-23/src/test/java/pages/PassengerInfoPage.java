@@ -45,11 +45,11 @@ public class PassengerInfoPage {
     }
 
     public String getDepartureAirport() {
-        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 5).get(0).getText();
+        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 2).get(0).getText();
     }
 
     public String getArrivalAirport() {
-        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 5).get(1).getText();
+        return baseFunc.waitForNumberOfElementsToBe(FLIGHT_INFO, 2).get(1).getText();
     }
 
     public String getSecondDepartureAirport() {

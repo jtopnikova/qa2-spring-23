@@ -6,7 +6,7 @@ Feature: Airplane Ticket Booking
       | to   | JFC |
 
     And passenger info is
-      | first_name | Julija |
+      | first_name | random |
       | last_name  | Turp   |
 
     And flight info is
@@ -15,7 +15,7 @@ Feature: Airplane Ticket Booking
       | children_count  | 1          |
       | luggage_count   | 3          |
       | flight_date     | 12-05-2018 |
-      | seat_nr         | 17         |
+      | seat_nr         | 16         |
 
     And home page is opened
 

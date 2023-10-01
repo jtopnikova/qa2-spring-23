@@ -1,5 +1,7 @@
 package model.Tickets;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 public class Passenger {
     private String firstName;
     private String lastName;
@@ -8,14 +10,22 @@ public class Passenger {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    public Passenger() {}
+
+    public Passenger() {
+    }
 
     public String getFirstName() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+//        if (firstName.equals("random")) {
+ //           this.firstName = RandomStringUtils.randomAlphabetic(10);
+  //      } else {
+    //        this.firstName = firstName;
+     //   }
+        this.firstName = firstName.equals("random") ? RandomStringUtils.randomAlphabetic(10) : firstName;
+        //               |--------------expression----|--------------true---------------------------|---false--|
     }
 
     public String getLastName() {
